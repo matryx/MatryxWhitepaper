@@ -152,7 +152,9 @@ Formally, a Tournament is composed of the following data:
 \begin{enumerate}
 \item $owner$ - Owner of the Tournament
 \item $rounds$ - A list of all Rounds on the Tournament
-\item $entrantCount$ - The number of participants in the Tournament 
+\item $entrantCount$ - The number of participants in the Tournament
+\item $positiveVotes$ - The number of positive interactions users have had with this Tournament
+\item $negativeVotes$ - The number of negative interactions users have had with this Tournament
 \item $title$ - The title of the Tournament, as given by the Tournament creator
 \item $category$ - The scientific field or category that the Tournament belongs to, as determined by the Tournament creator
 \item $descHash$ - A hash used to look up the description of the Tournament on a decentralized storage solution such as IPFS
@@ -181,7 +183,7 @@ To clarify:
 \item A Tournament will otherwise be in $S_{1}^t$ if a Round $R_j$ has yet to begin.
 \item A Tournament will be in $S_{2}^t$ if the current Round, $R_j$, of the Tournament is in its Open state.
 \item A Tournament permanently enters into $S_{3}^t$ when the Tournament owner decides to close the Tournament.
-\item A Tournament permanently enters into $S_{4}^t$ if ever the Tournament owner fails to select winners by $endTime$+$roundReview$ for $R_j$.
+\item A Tournament permanently enters into $S_{4}^t$ if the Tournament owner fails to select winners by the end of the current Round $R_j$.
 \end{enumerate}
 Again, entry fees of the Tournament can be returned at any time so long as a user has paid the Tournament's entry fee.
 
@@ -208,7 +210,7 @@ Each Round of a Tournament, including the current Round $R_j$, is composed of:
 \end{enumerate}
 Until time $startTime$, the contract remains in the initial state, $S_{0}^r$. At $startTime$, the Round transitions to state $S_{2}^r$. Contributors may register new Submissions to $R_j$ at this time.
 Once time $endTime$ is reached, $R_j$ will enter state $S_{3}^r$ at which no more submissions may be made to $R_j$ and the Tournament owner may choose a set of winning submissions  until time $endTime$+$roundReview$. This set may consist of one or multiple Submission addresses.
-Upon the Tournament owner selecting a set of winning submissions from $R_j$, $roundReward$ for $R_j$, $roundReward$ MTX is distributed to the smart contracts representing each Submission. During this time, the Tournament owner must also choose one of the following courses of action for their Tournament:
+Upon the Tournament owner selecting a set of winning submissions from $R_j$, $roundReward$ MTX is allocated to each Submission. During this time, the Tournament owner must also choose one of the following courses of action for their Tournament:
 \begin{enumerate}
 \item $DoNothing$ - Keeps $R_j$ open. 
 \item $StartNextRound$ - Closes $R_j$ and opens $R_{j+1}$
@@ -245,12 +247,12 @@ After entering a Tournament, a user can create one or multiple Submissions only 
 \item $fileHash$ - A hash used to look up the optional supporting files of the Submission on a decentralized storage solution such as IPFS
 \item $distribution$ - Reward distribution across contributors to the Submission
 \item $contributors$ - Addresses of contributors to this Submission
-\item $references$ - Submissions that this Submission referenced in its creation
+\item $references$ - Addresses of Submissions that this Submission references
 \end{enumerate}
 
 Like Submission creation, updating a Submission's details ($title$, $descHash$ and $fileHash$) is only permitted when $R_j$ is in $S_{2}^r$. At all other times, Submission details are locked. Submission's contributors and references may be updated at any time. 
 
-Additionally, a Submission's $fileHash$ is unviewable to all Matryx users unless explicitly unlocked via a specific call to the Submission contract. Submission owners and Tournament owners are exceptions to this rule and may view Submissions of theirs without making any special calls.
+Additionally, a Submission's $fileHash$ is unviewable to all Matryx users unless explicitly unlocked via a specific call to the Submission contract. Submission owners and Tournament owners are exceptions to this rule and may view Submissions of theirs without making any special calls. Submission contributors can unlock its $fileHash$ at any point, and all other users can only unlock the $fileHash$ after $R_j$ is in $S_{3}^r$.
 Submission contracts are also responsible for distributing rewards to Submission contributors: when a Submission is part of the winning set, contributors withdraw their portion of $roundReward$ from the Submission contract directly.
 
 
@@ -302,14 +304,14 @@ In the design of the system, several potential attack vectors were considered. B
 \begin{enumerate}
     \item  Submitters have a strong incentive to bias the results of a Tournament via any means available. 
 One potential attack is entering the same or similar Submission multiple times, thus increasing the likelihood of being evaluated and/or influencing the Tournament owner to take longer than the $roundReview$ seconds allotted for the Round's review period. While it may be possible for a Submitter to perform a Sybil attack on a Tournament by submitting from a single address, logic on the Tournament that aggregates submissions by users largely resolves this. However, an unrestricted Submitter may still perform a Sybil attack on a Tournament by making Submissions from multiple accounts. We have thus attempted to minimize the cost of this attack by introducing entry fees to Tournaments, as described in Section \ref{Tournaments}. With an appropriately chosen Tournament entry fee, the Contributor’s gain from making multiple Submissions does not exceed the opportunity cost of the entry fee. Additionally, user reputation may aid in mitigating this attack to a small degree.
-\item An unrestricted Submission creator may choose to copy the work of another Submission creator. Given the Matryx team's mission statement, this was a particularly concerning attack vector for us. We opted to minimize the likelihood of this attack by forcing those who wish to view the contents of a Submission to register their address to the Submission. We can then perform targeted similarity analysis between Submissions to ensure uniqueness and proper attribution of credit. Additionally, the Submission evaluation interface may be tweaked to prefer earlier Submissions.
+\item An unrestricted Submission creator may choose to copy the work of another Submission creator. Given the Matryx team's mission statement, this was a particularly concerning attack vector for us. We opted to minimize the likelihood of this attack by forcing those who wish to view the contents of a Submission to register their address to the Submission. We can then perform targeted similarity analysis between Submissions to ensure uniqueness and proper attribution of credit. Platform users also have the ability to flag a Submission for missing a reference, which negatively affects the Submission owner's user reputation. Additionally, the Submission evaluation interface may be tweaked to prefer earlier Submissions.
 \item Tournament owners may also attempt to attack the Platform. The most obvious attack available to an unrestricted Tournament owner is to refuse to reward their Tournament's bounty to any of its participants. In this way, the Tournament owner could receive the benefit of seeing all work performed on a problem without ever having to credit those who did the work.
 The Matryx Platform minimizes the likelihood of this attack through both the reputation system and the addition of state $S_{6}^r$ to Rounds, wherein all participants of a Tournament become able to withdraw an equal share of the Tournament's bounty in the event that the Tournament owner does not select at least one winning Submission.
 
 \item Intra-round Submission duplication attacks may be mitigated entirely with a two-phase commit-and-reveal Submission process. 
 In this system, Submission creators publish only the encrypted hash of their Submission and thus commit to that Submission without making it publicly available.
 In the reveal phase, the Tournament creator may pass the Round's encryption key along with the winning Submission set.
-This keeps Submission content private until the end of the judging phase, at little expense in a Round's logic complexity.
+This keeps Submission content private until the end of the judging phase, without significantly increasing the complexity of the Round's logic.
 \end{enumerate}
 
 \subsection{Licensing}\label{licensing}
@@ -340,7 +342,7 @@ In further detail:
 \begin{enumerate}
     \item \textit{Caller type lookup:} \\ When a call is made to the Platform, the Platform’s fallback function is invoked. The fallback first makes a call to System to determine what type of Matryx entity (Tournament, Round, Submission, or User), is making the call.
     \item \textit{Library name lookup:} \\ Using the type from 1), Platform makes a call to System to look up the name of the library associated with that type.
-    \item \textit{Library address lookup:} \\ Using the library name from 2), Platform makes a call to System to lookup the current library address associated with that name.
+    \item \textit{Library address lookup:} \\ Using the library name from 2), Platform makes a call to System to look up the current library address associated with that name.
     \item \textit{Calldata transformation lookup:} \\ Using the library name and function signature from the incoming calldata, Platform makes one final call to System to determine how to transform the incoming calldata for the respective library call.
     \item \textit{Call to library function:} \\ With the transformed calldata, Platform makes the call to the library function and returns the result.
 \end{enumerate}
@@ -357,7 +359,7 @@ While most of these steps are quite straightforward, we believe step 4) warrants
 After the Platform receives this data from MatryxSystem, it will synthesize a call to the library at the address received from System by modifying the incoming calldata in the following way:
 \begin{enumerate}
 \item Platform will replace the function selector of the incoming call with $modifiedSelector$ returned by System.
-\item Platform will inject $injectedParams$ directly after $modifiedSelector$.
+\item Platform will inject $injectedParams$ directly after $modifiedSelector$. $injectedParams$ includes the address of the original caller to the platform, so that $msg.sender$ is preserved in the call to the library, and the address of MatryxPlatform, so that the library has access to the data stored by the Platform.
 \item Platform will offset each parameter whose index is contained within $dynamicParams$ by the length of $injectedParams$. This allows us to add parameters to an incoming call while maintaining the integrity of the call's existing parameters.
 \end{enumerate}
 
@@ -372,9 +374,9 @@ There are two types of upgrades possible for ours or any smart contract system:
 \item Functionality upgrades
 \item Storage upgrades
 \end{enumerate}
-For purely functional upgrades, MatryxSystem can register a library for the desired new functionality at any time. All versions of MatryxPlatform are capable of undergoing functionality change and bug fixes in this manner without the need for recreating the Platform’s storage within another contract. 
+For purely functional upgrades, MatryxSystem can register a library for the desired new functionality at any time. All versions of MatryxPlatform are capable of undergoing functionality changes and bug fixes in this manner without the need to recreate the Platform’s storage within another contract. 
 
-Unlike a pure logic upgrade, storage upgrades require the creation of a new Platform version on MatryxSystem. MatryxSystem must then register each new Platform library to MatryxSystem under that version. Then, the deployed MatryxPlatform contract will simply update its version field so that any calls made to this ``new" Platform (or any contracts created by this new MatryxPlatform) will be directed to their respective upgraded libraries. The upgraded libraries for Tournament, Round, or Submission can then safely change the structure of their data so that new Tournaments, Rounds, or Submissions can support new features.
+Unlike a pure logic upgrade, storage upgrades require the creation of a new Platform version on MatryxSystem. MatryxSystem must then register each new Platform library to MatryxSystem under that version and update its $currentVersion$ field, so that any calls made to this ``new" Platform (or any new contracts created by it) will be directed to their respective upgraded libraries. The upgraded libraries for Tournament, Round, or Submission can then safely change the structure of their data so that new Tournaments, Rounds, or Submissions can support new features.
 
 In the interest of security, upgrades to Matryx can only be performed by the Matryx team at Nanome.
 
