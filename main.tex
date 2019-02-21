@@ -20,8 +20,8 @@
 }
 
 
-\author{Steve McCloskey, Keita Funakawa, Vincent Brunet \\
-Scott Morgan, Edgardo Leija, Adam Simon, Kyle Lee, Max Howard
+\author{Steve McCloskey$^{1}$, Keita Funakawa$^{2}$, Vincent Brunet$^{3}$ \\
+Scott Morgan$^{4}$, Edgardo Leija$^{5}$, Adam Simon$^{6}$, Kyle Lee$^{7}$, Max Howard$^{8}$
 \thanks{$^{1}$ Chief Executive Officer 
         {\tt\small \href{mailto: steve@nanome.ai}{steve@nanome.ai}}}%
 \thanks{$^{2}$ Chief Operations Officer
@@ -54,8 +54,8 @@ Scott Morgan, Edgardo Leija, Adam Simon, Kyle Lee, Max Howard
 \begin{abstract}
 
 Innovation is often an iterative process; scientists have mastered the art of standing on the shoulders of giants. 
-New discoveries are the result of collaboration between mathematicians, tacos, and engineers alike, each building on thousands of years of established knowledge. 
-In this paper, we present Matryx: a platform that enables and incentivizes this type of collaboration. 
+New discoveries are the result of collaboration between mathematicians, scientists, and engineers, each building on thousands of years of established knowledge.
+In this paper, we present Matryx: a platform that enables and incentivizes this type of collaboration.
 Matryx is composed of 1. a collaboration system to track innovation and 2. a bounty system to award solutions to scientific problems. 
 The focus of this whitepaper is to provide a technical description of the \href{https://github.com/matryx/MatryxPlatform}{Matryx Platform} design.
 
@@ -67,17 +67,15 @@ The focus of this whitepaper is to provide a technical description of the \href{
 In 2000, the Henri Clay Institute of Mathematics selected seven difficult problems in science, technology, engineering, and mathematics (STEM) and offered a \$1,000,000 prize for a solution to any of these problems. 
 In 2003, Russian mathematician Grigori Perelman became the first person to solve one of these ``Millennium Problems": the Poincaré conjecture.
 
-The Poincaré Conjecture has baffled mathematicians since its formalization in 1903 by Henri Poincaré, the father of topology\footnote{Topology is the study of the properties that are preserved through deformations, twistings, and stretchings of objects. See Eric Weisstein's discussion on MathWorld: \href{http://mathworld.wolfram.com/Topology.html}{http://mathworld.wolfram.com/Topology.html}}. 
+The Poincaré Conjecture has baffled mathematicians since its formalization in 1903 by Henri Poincaré, the father of topology\footnote{Topology is the study of the properties that are preserved through deformations, twistings, and stretchings of objects. See Eric Weisstein's discussion on MathWorld: \href{http://mathworld.wolfram.com/Topology.html}{http://mathworld.wolfram.com/Topology.html}}.
 Richard Hamilton, Professor of Mathematics at Columbia University and one of the most brilliant mathematical minds in history, laid the foundations for Perelman's proof. 
 Christina Sormani, Professor of Mathematics at the City University of New York, broadly describes the novel efforts \cite{sormani} of Hamilton and Perelman:
 \begin{quote}
-“In recent years Hamilton had been investigating an approach to solve this problem using the Ricci Flow, an equation which evolves and morphs a manifold into a more understandable shape. Then in late 2002, after many years of studying Hamilton’s work and investigating the concept of entropy, Perelman posted an article which combined with Hamilton’s work would provide a proof of Thurston’s Geometrization Conjecture and, thus, the Poincaré  Conjecture.” 
+“In recent years Hamilton had been investigating an approach to solve this problem using the Ricci Flow, an equation which evolves and morphs a manifold into a more understandable shape. Then in late 2002, after many years of studying Hamilton’s work and investigating the concept of entropy, Perelman posted an article which combined with Hamilton’s work would provide a proof of Thurston’s Geometrization Conjecture and, thus, the Poincaré Conjecture.” 
 \end{quote}
 
 After seven years of peer review, Perelman was awarded the Millennium Prize. 
-In an unexpected turn of events, he declined the prize money, arguing that the contributions of Hamilton and other mathematicians played a significant role in developing his final solution. 
-He believed that they deserved just as much of the award and recognition and that it would be wrong to claim the money and fame for himself. 
-He declared his ``disagreement with the organized mathematical community"\cite{ritter2010}.
+In an unexpected turn of events, he declined the prize money, arguing that the contributions of Hamilton and other mathematicians played a significant role in developing his final solution. He declared his ``disagreement with the organized mathematical community"\cite{ritter2010}, arguing that his peers deserved just as much of the award and recognition and that it would be wrong to claim the money and fame for himself. 
 
 Many mathematicians - like Perelman - consider these lump awards to be unjust. 
 New ideas are usually collaborative in nature and are based on other people's existing ideas.
@@ -87,7 +85,7 @@ Current incentive structures do not reflect the needs of collaborative fields.
 
 Matryx provides a structure that reduces the friction of rewarding collaborators. 
 Rather than attributing all the credit to one person or one group who proposes a solution that is built on other people’s work, Matryx tracks the provenance of assets, enables collaboration, and divides rewards amongst all participants. 
-In this way, Matryx can reward each unit of progress towards the goal. 
+In this way, Matryx can reward each unit of progress towards a given goal. 
 Solitary research and siloed collaboration are discouraged, while open collaboration in pursuit of a shared reward is incentivized.
 
 
@@ -120,7 +118,7 @@ Some generalized solutions to attribution in communities have been proposed by p
 \label{matryx::acollaborationPlatform}
 A standard Platform for collaboration would enable low-friction creation, distribution, and attribution of works. 
 Matryx is composed of a smart contract system and a supporting framework which interfaces with applications such as \href{https://nanome.ai/calcflow/}{Calcflow}\footnote{See \href{https://nanome.ai/calcflow/}{https://nanome.ai/calcflow/}} and \href{https://nanome.ai/}{Nanome}\footnote{See \href{https://nanome.ai/}{https://nanome.ai/}}. 
-The smart contract system provides a public ledger of open scientific projects (``Tournaments"), their associated payments (``Bounties”) and proposed solutions (``Submissions”), created around pieces of work (``Commits") that reference other pieces of work.
+The smart contract system provides a public ledger of open scientific projects (``Tournaments"), their associated payments (``Bounties") and proposed solutions (``Submissions"), created around pieces of work (``Commits") that reference other pieces of work.
 This system of Tournaments, Submissions and Commits is the core of the Matryx Platform.
 
 Tournaments are multi-round competitions executed via smart contracts. 
@@ -244,7 +242,7 @@ As described above, each Submission is submitted to a particular $roundIndex$ of
 
 \subsection{Commits}\label{Commits}
 
-The Matryx commit system is an iteration on Matryx's attribution tracking model, previously implemented as contributor and reference arrays within Submissions; With Matryx Commits, users are one step closer to a seamless process of creating immutable proof of their contributions toward shared scientific discoveries. This said, the current primary function of Matryx Commits is to provide an indisputable timestamp for original scientific work. While there are still unresolved issues with the commit system as a form of contribution tracking, Matryx Commits do accumulate contribution information for larger projects, allowing them to at least approximate a contribution distribution over their contributing members. The anatomy of Matryx Commits is currently as follows:
+Previously, Matryx attributed credit to users via manually populated contributor and reference arrays within each Matryx Submission. The commit system is the second iteration of Matryx's attribution model. Because there are still unresolved issues with the commit system as a means of attributing credit to Matryx users, the current primary function of Matryx Commits is to provide indisputable timestamps for original scientific work. Still, Commits accumulate contribution information for multi-commit projects (albeit naively), allowing for a rudimentary approximation of the distribution of work performed over a project's contributing members. The anatomy of Matryx Commits is currently as follows:
 
 \begin{enumerate}
 \item $owner$ - The owner of the commit
@@ -254,21 +252,21 @@ The Matryx commit system is an iteration on Matryx's attribution tracking model,
 \item $contentHash$ - A deterministic content Multihash (IPFS, Swarm, etc)
 \item $value$ - The value that has been assigned to the commit
 \item $ownerTotalValue$ - The total value that the owner of this commit has generated up until this commit
-\item $totalValue$ - The total value generated by this commit and all ancestors leading up to it
-\item $height$ - One plus the number of ancestors this commit has
+\item $totalValue$ - The total value generated by this commit and all of its ancestry
+\item $height$ - The length of this commit chain
 \item $parentHash$ - The parent commit's keccak256 hash
-\item $children$ - keccak256 hashes of all commits that were derived from this commit
+\item $children$ - keccak256 hashes of all child commits whose content is derivative of this commit
 \end{enumerate}
 \bigskip
 
-To create a commit, a user must perform a ``commit-reveal" process (which we've aliased as ``claim-create" to avoid confusion) to ensure that their content is not front-runnable by malicious actors.
-This process entails two steps:
+To create a commit, a user must perform a commit-reveal process (which we've aliased ``claim-create" to avoid confusion with Matryx Commits). This ensures that their content is not front-runnable by malicious actors.
+This process entails the user making two transactions:
 \begin{enumerate}
 \item claimCommit
 \item createCommit \textit{or} createSubmission
 \end{enumerate}
 
-To claim a commit, one must provide the commit's hash to the $claimCommit$ function. As mentioned above, $commitHash$ is the keccak256 hash of the user's address, some secret salt and the commit's $contentHash$. Once the $claimCommit$ transaction has been mined, the user is  free to create their commit by providing to the $createCommit$ function the hash of the commit's parent (if this commit was a continuation of prior work), their salt, the $contentHash$ of the commit, its $value$, as well as a special isFork flag. When the user sets the isFork flag to true, or creates a commit without a parent, a new group is created for their commit. When a member of a commit's group adds a Matryx user to that group, the new group member is then able to create commits off of any other commit created by members of that group, without the transfer of MTX. This creates a low-friction environment for Matryx users to collaborate within. Conversely, setting isFork to true will assign a new group to the user's commit, allowing the user to work alone or with a group of their choosing, but will require the user to transfer to the forked commit its $totalValue$ in MTX. As an alternative to $createCommit$, after calling $claimCommit$, the user can call $createSubmission$, which will create a new commit and subsequently submit that commit to a tournament specified by the user.
+To claim a commit, the user must provide the commit's hash to the $claimCommit$ function. As mentioned above, the $commitHash$ is the keccak256 hash of the user's address, some secret or salt and the commit's $contentHash$. Once the $claimCommit$ transaction has been mined, the user is free to create their commit by calling the $createCommit$ function with parent commit's $commitHash$ i.e. $parentHash$ (if this commit was a continuation of prior work), their salt, the $contentHash$ of the commit, its $value$, as well as a special isFork flag. When the user sets the isFork flag to true, or creates a commit without a parent, a new group is created for their commit. When a member of a commit's group adds a Matryx user to that group, the new group member is then able to create commits off of any commit created by members of that group, without the transfer of MTX. Conversely, setting isFork to true will assign a new group to the user's commit, allowing the user to work alone or with a new group of their choosing, but will require the user to transfer to the forked commit its $totalValue$ in MTX. After calling $claimCommit$, the user can alternatively call $createSubmission$, which will both create a new Commit as well as a Submission to a Tournament designated by the user.
 
 \subsection{Reputation}\label{reputation}
 
