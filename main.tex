@@ -21,25 +21,26 @@
 
 
 \author{Steve McCloskey$^{1}$, Keita Funakawa$^{2}$, Vincent Brunet$^{3}$ \\
-Scott Morgan$^{4}$, Edgardo Leija$^{5}$, Adam Simon$^{6}$, Kyle Lee$^{7}$, Max Howard$^{8}$
-\thanks{$^{1}$ Chief Executive Officer 
-        {\tt\small \href{mailto: steve@nanome.ai}{steve@nanome.ai}}}%
-\thanks{$^{2}$ Chief Operations Officer
-        {\tt\small \href{mailto: keita@nanome.ai}{keita@nanome.ai}}}%
-\thanks{$^{3}$ Chief Technology Officer
-        {\tt\small \href{mailto: vincent@nanome.ai}{vincent@nanome.ai}}}%
-\thanks{$^{4}$ Chief Financial Officer
-        {\tt\small \href{mailto: scott@nanome.ai}{scott@nanome.ai}}}%
-\thanks{$^{5}$ Chief Experience Officer
-        {\tt\small \href{mailto: edgardo@nanome.ai}{edgardo@nanome.ai}}}%
-\thanks{$^{6}$ External Relations
-        {\tt\small \href{mailto: adam@nanome.ai}{adam@nanome.ai}}}%
-\thanks{$^{7}$ Head Mathematician
-        {\tt\small \href{mailto: kyle@nanome.ai}{kyle@nanome.ai}}}%
-\thanks{$^{8}$ Chief Architect
-        {\tt\small \href{mailto:
-        max@nanome.ai}{max@nanome.ai}}}%
-}
+Scott Morgan$^{4}$, Edgardo Leija$^{5}$, Adam Simon$^{6}$, Kyle Lee$^{7}$, Max Howard$^{8}$ }
+
+% \thanks{$^{1}$ Chief Executive Officer 
+%         {\tt\small \href{mailto: steve@nanome.ai}{steve@nanome.ai}}}%
+% \thanks{$^{2}$ Chief Operations Officer
+%         {\tt\small \href{mailto: keita@nanome.ai}{keita@nanome.ai}}}%
+% \thanks{$^{3}$ Chief Technology Officer
+%         {\tt\small \href{mailto: vincent@nanome.ai}{vincent@nanome.ai}}}%
+% \thanks{$^{4}$ Chief Financial Officer
+%         {\tt\small \href{mailto: scott@nanome.ai}{scott@nanome.ai}}}%
+% \thanks{$^{5}$ Chief Experience Officer
+%         {\tt\small \href{mailto: edgardo@nanome.ai}{edgardo@nanome.ai}}}%
+% \thanks{$^{6}$ External Relations
+%         {\tt\small \href{mailto: adam@nanome.ai}{adam@nanome.ai}}}%
+% \thanks{$^{7}$ Head Mathematician
+%         {\tt\small \href{mailto: kyle@nanome.ai}{kyle@nanome.ai}}}%
+% \thanks{$^{8}$ Chief Architect
+%         {\tt\small \href{mailto:
+%         max@nanome.ai}{max@nanome.ai}}}%
+% }
 
 \begin{document}
 
@@ -54,10 +55,10 @@ Scott Morgan$^{4}$, Edgardo Leija$^{5}$, Adam Simon$^{6}$, Kyle Lee$^{7}$, Max H
 \begin{abstract}
 
 Innovation is often an iterative process; scientists have mastered the art of standing on the shoulders of giants. 
-New discoveries are the result of collaboration between mathematicians, scientists, and engineers, each building on thousands of years of established knowledge.
+New discoveries are the result of collaboration between mathematicians, scientists, and engineers alike, each building on thousands of years of established knowledge.
 In this paper, we present Matryx: a platform that enables and incentivizes this type of collaboration.
-Matryx is composed of 1. a collaboration system to track innovation and 2. a bounty system to award solutions to scientific problems. 
-The focus of this whitepaper is to provide a technical description of the \href{https://github.com/matryx/MatryxPlatform}{Matryx Platform} design.
+Matryx is composed of 1. a collaboration system to track innovation and 2. a bounty system to award solutions to scientific problems.
+The focus of this whitepaper is to provide a technical overview of \href{https://github.com/matryx/MatryxPlatform}{Matryx Platform}'s design.  
 
 \end{abstract}
 
@@ -75,7 +76,7 @@ Christina Sormani, Professor of Mathematics at the City University of New York, 
 \end{quote}
 
 After seven years of peer review, Perelman was awarded the Millennium Prize. 
-In an unexpected turn of events, he declined the prize money, arguing that the contributions of Hamilton and other mathematicians played a significant role in developing his final solution. He declared his ``disagreement with the organized mathematical community"\cite{ritter2010}, arguing that his peers deserved just as much of the award and recognition and that it would be wrong to claim the money and fame for himself. 
+In an unexpected turn of events, he declined the prize money, arguing that the contributions of Hamilton and other mathematicians played a significant role in the development of his final solution. He declared his ``disagreement with the organized mathematical community"\cite{ritter2010}, arguing that his peers deserved just as much of the award and recognition and that it would be wrong to claim the money and fame for himself. 
 
 Many mathematicians - like Perelman - consider these lump awards to be unjust. 
 New ideas are usually collaborative in nature and are based on other people's existing ideas.
@@ -98,47 +99,66 @@ It is nearly impossible to find all current and past research on a given topic w
 Innovation in STEM is hindered by this high friction of discovery. 
 Researchers may be attacking the same problems with no knowledge of each other's respective progress. 
 This wastes brainpower, time, and money. Organizations like SciHub have attacked this problem by circumventing technical and legal controls on information and research, but a solution within the bounds of the law is needed. 
-Recently, a gathering of ministers of science in the EU demanded all scientific research papers be made free and open by 2020 \cite{khomami2016}. 
-But this type of legal reform is time-consuming and has no guarantee of success, and doesn’t provide a technical solution to the difficulty of discovery and dissemination of research. 
+In 2016, a gathering of ministers of science in the EU demanded all scientific research papers be made free and open by 2020 \cite{khomami2016}. 
+But this type of legal reform is time-consuming and has no guarantee of success, and doesn’t provide a technical solution to the difficulty of discovery and dissemination of research.
 
 Also, many academic researchers struggle with publishing quality research because of scarce funding and pressure to move up in the academic world.
 In 2014, Jeffrey Beall of the University of Colorado coined the term “predatory publishers”, referring to publishers who encourage researchers to publish without proper peer review\cite{wager2017}.
 As a result, researchers must publish high volumes of low-quality papers due to demands to advance their careers in their respective institutions. 
 
 \subsection{Attribution}\label{attribution}
-In research and creative projects it is difficult to attribute value across contributions. 
+In research and creative projects it is difficult to attribute value across contributions.
 Contributions are rarely tracked with any degree of accuracy, and there is not always a clear path from problem to solution. 
 As such, owners are improperly (or not at all) compensated for subsequent usage and ``remixing” of their works.
 Without clear attribution, incentives for innovation do not accurately reflect contribution. 
 This creates disincentives for the creation and distribution of valuable works. 
-This problem is common in STEM research, as well as 3D object creation, music (re)mixing, and a wealth of other fields. 
+This problem is common in STEM research, digital media creation, and a wealth of other fields. 
 Some generalized solutions to attribution in communities have been proposed by projects like Backfeed and Mediachain, but no mature distributed attribution system has been deployed.
 
 \section{Matryx: A collaboration Platform}
 \label{matryx::acollaborationPlatform}
-A standard Platform for collaboration would enable low-friction creation, distribution, and attribution of works. 
-Matryx is composed of a smart contract system and a supporting framework which interfaces with applications such as \href{https://nanome.ai/calcflow/}{Calcflow}\footnote{See \href{https://nanome.ai/calcflow/}{https://nanome.ai/calcflow/}} and \href{https://nanome.ai/}{Nanome}\footnote{See \href{https://nanome.ai/}{https://nanome.ai/}}. 
-The smart contract system provides a public ledger of open scientific projects (``Tournaments"), their associated payments (``Bounties") and proposed solutions (``Submissions"), created around pieces of work (``Commits") that reference other pieces of work.
-This system of Tournaments, Submissions and Commits is the core of the Matryx Platform.
+Matryx is a decentralized smart contract system for the creation, attribution and incentivization of scientific work. It provides a record of open units of scientific work (``Commits"), problems to be solved (``Tournaments"), and their proposed solutions (``Submissions"). This system of Commits, Tournaments, and Submissions is the core of the Matryx Platform. The Matryx platform is an upgradeable system and can support the introduction of new functionality. The ability to upgrade the platform can be used to introduce new features (such as the upcoming Matryx Marketplace) after having been migrated to the Ethereum Mainnet. The platform's upgrading mechanism will be discussed in \textbf{System Design \ref{systemdesign}}. Matryx can also interface with research tools such as \href{https://nanome.ai/calcflow/}{Calcflow}\footnote{See \href{https://nanome.ai/calcflow/}{https://nanome.ai/calcflow/}} and \href{https://nanome.ai/}{Nanome}\footnote{See \href{https://nanome.ai/}{https://nanome.ai/}} to accelerate the rate of mathematical and nanotechnological innovation. We will now discuss the various components of Matryx, beginning with Matryx Commits.
 
-Tournaments are multi-round competitions executed via smart contracts. 
-Tournament requirements are posted publicly and are hashed in the smart contract system. 
-The Tournament owner determines a reward which is locked into a smart contract for the duration of the Tournament in order to arbitrate the transfer of funds without the need for a third party, as would be the case in competitions hosted by centralized entities.
-Once the Tournament is public, users create Submissions to that Tournament whose data will be stored on the Platform contract itself.
-Applications such as Nanome, Calcflow, and the Matryx web app will be the preliminary interfaces capable of publishing generated content on the Matryx Platform. However, Submission content can come from any external application.
+\subsection{Commits}\label{Commits}
 
-When the user decides to make a Submission to an open Tournament, the underlying commit content is put together with some additional content (title and description), signed, and made publicly available on the Tournament.
-At the end of a Tournament, the Tournament creator distributes the bounty across the winning Submissions.
+A Matryx Commit is a unit of work on Matryx tracked by the Ethereum blockchain. The anatomy of Matryx Commits is as follows:
 
-By nature of the Tournament state system  (see Section \ref{Tournaments}), Matryx allows Submission owners to view all Submissions created for a Round after that Round has ended.
-Individuals or organizations will be able to define their reward mechanisms for digital works, create their own licensing terms, and prove authenticity and ownership of works via the Ethereum public ledger. 
-Rewards will be distributed to winning Submissions after the review process based on criteria decided by the Tournament owner. We will now discuss the structure of a Tournament in further detail.
+\begin{enumerate}
+\item $owner$ - The owner of the Commit
+\item $timestamp$ - The unix-epoch time in seconds at which the Commit was created on chain
+\item $groupHash$ - The keccak256 hash of the group working on the line of work this Commit is a part of
+\item $commitHash$ - The Commit's unique identifier; a keccak256 hash of: the creator of the Commit, the salt used to claim the Commit and the $content$ of the Commit
+\item $content$ - A deterministic content Multihash (IPFS, Swarm, etc)
+\item $value$ - The value that has been assigned to the Commit
+\item $ownerTotalValue$ - The total value that the owner of this Commit has generated in this Commit's chain
+\item $totalValue$ - The total value of this Commit chain
+\item $height$ - The length of this Commit chain
+\item $parentHash$ - The parent Commit's keccak256 hash
+\item $children$ - keccak256 hashes of all child Commits whose content is derivative of this Commit
+\end{enumerate}
+\bigskip
+
+To create a Commit, a user must perform a commit-reveal process to ensure that their content is not front-run by malicious actors (see \ref{attacks}). We have renamed commit-reveal to ``claim-create" to avoid confusion from reusing the term "commit".
+This process requires the user to make two transactions to record their work:
+\begin{enumerate}
+\item claimCommit
+\item createCommit \textit{or} createSubmission
+\end{enumerate}
+
+To claim a Commit, the user must provide the Commit's hash to the $claimCommit$ function. As mentioned above, the $commitHash$ is the keccak256 hash of the user's address, some secret or salt, and the Commit's $content$. Once the $claimCommit$ transaction has been mined, the user is free to create their Commit by calling the $createCommit$ function. Arguments to this function include $parentHash$ (if this Commit was a continuation of prior work), the salt used in $claimCommit$, the $content$ of the Commit, its $value$, and a special $isFork$ flag. When the user sets $isFork$ to true, or creates a Commit without a parent, a new group is created for their Commit. When a member of a Commit's group adds a Matryx user to that group, the new group member is then able to create Commits without the need to transfer MTX to that parent. This is, users in a group can freely commit off of one another's commits in the same chain. Conversely, passing true as $isFork$ will assign a new group to the user's Commit, allowing the user to work alone or with a new group of their choosing. This will require the user to transfer to the forked Commit its $totalValue$ in MTX. All ancestor Commit creators can then withdraw the share of MTX that corresponds to the sum of their contributions' values in proportion to the total value of the chain. After calling $claimCommit$, the user can alternatively call $createSubmission$, which will create a new Commit and a Submission. The Submission is then submitted to the Tournament designated by the user. We will define Tournaments and Submissions in precise terms in the two following sections.
 
 \subsection{Tournaments}\label{Tournaments}
 
-Tournaments consist of one or more Rounds of submission and evaluation. Previous Submissions can be referenced by new Submissions in subsequent Rounds. This is one way in which Matryx enables collaboration between users.
-Dividing Tournaments into Rounds in this way maximizes the likelihood of finding an optimal solution to the Tournament's described problem and allows for both collaboration (among inter-Round Submission teams, where previous Rounds' Submissions can be built upon) and competition (among intra-Round Submission teams, where Submissions made to a Round are invisible to all but their creators).
+Tournaments are multi-round competition smart contracts.
+Tournament requirements are posted publicly and are hashed in the smart contract system. 
+The Tournament owner determines a reward, which is locked into a smart contract for the duration of the Tournament. This is done to arbitrate the transfer of funds without the need for a third party, as would be the case in competitions hosted by centralized entities.
+Once the Tournament is public, users can create Submissions for that Tournament.
+Applications such as Nanome, Calcflow, and the Matryx web app will be the preliminary interfaces capable of publishing generated content to the Matryx Platform. However, Submission content can come from any external application.
 
+When the user decides to make a Submission to an open Tournament, the underlying Commit content is put together with some additional content (title and description), signed, and made publicly available on the Tournament.
+At the end of a Tournament, the Tournament creator distributes the bounty. If there are multiple eligible winners, the Tournament creator can specify the distribution that will be used to split the bounty across the winning submissions. We will now discuss the structure of a Tournament in further detail.
+
+Tournaments consist of one or more Rounds of content submission and evaluation. 
 Formally, a Tournament is composed of the following data:
 \begin{enumerate}
 \item $version$ - The Tournament's internal version
@@ -148,11 +168,9 @@ Formally, a Tournament is composed of the following data:
 \item $entryFee$ - The cost to enter the Tournament as a participant, as determined by the Tournament creator
 \item $rounds$ - A list of all Rounds on the Tournament
 \item $entryFeePaid$ - All entry fees paid by each user
-\item $allEntrants$ - A list of all participants in the Tournament
-\item $totalEntryFees$ - The sum of all entry fees being held by the Tournament
 \end{enumerate}
 
-To clarify, when a Matryx user enters a Tournament, they send $entryFee$ MTX to the Tournament contract, their address is appended to $allEntrants$ and $entryFeePaid$ is set for their address. This user is free to leave the Tournament at any time, at which point $entryFee$ MTX will be returned to their account. In the event that $entryFee$ changes after the user has entered the Tournament, upon leaving the Tournament, the user will be sent the amount of MTX that they themselves paid to enter. $owner$ is the sole address able to create Rounds, select winners and otherwise update the state of the Tournament, including any of its $content$. At any time, anyone can increase a Tournament's MTX balance by transferring MTX to the Tournament contract address. However, $bounty$ will only ever reflect the amount of MTX initially allocated to the Tournament by its owner. Additionally, each Tournament is said to be in one of several time-dependent states. We introduce the following notation to describe these Tournament states: Let $S_i^t$ be the $i^{th}$ state of a Tournament and $R_j$ represent the $j^{th}$ Round. These states are:
+To clarify, a Matryx user first creates a Tournament with $content$, $bounty$, $entryFee$, and the initial round details. At the time of the Tournament's creation, $bounty$ MTX will be transferred from the Tournament owner to MatryxPlatform. This prevents Tournament creators from advertising many high value Tournaments that are not backed by their own balance of MTX. Subsequently, when a Matryx user enters a Tournament, $entryFeePaid$ is set for their address, and $entryFee$ MTX is transferred from their balance to MatryxPlatform's. This user is free to leave the Tournament at any time, at which point $entryFee$ MTX will be returned to their account. In the event that $entryFee$ changes after the user has entered the Tournament, upon leaving the Tournament, the user will still be sent the amount of MTX that they originally transferred in order to enter. $owner$ is the sole address able to create Rounds, select winners and otherwise update the state of the Tournament, including any of its $content$. At any time, anyone can increase a Tournament's bounty by making a specific call to the Tournament. Additionally, each Tournament is said to be in one of several time-dependent states. We introduce the following notation to describe these Tournament states: Let $S_i^t$ be the $i^{th}$ state of a Tournament and $R_j$ represent the $j^{th}$ Round. These states are:
 
 \begin{enumerate}
 \item $S_{0}^t$ - Not Yet Open
@@ -163,17 +181,15 @@ To clarify, when a Matryx user enters a Tournament, they send $entryFee$ MTX to 
 \end{enumerate}
 \bigskip
 
-
 To clarify: 
 
 \begin{enumerate}
 \item A Tournament will be in $S_{0}^t$ if $R_0$ has yet to begin.
-\item A Tournament will otherwise be in $S_{1}^t$ if a Round $R_j$ has yet to begin.
+\item A Tournament will otherwise be in $S_{1}^t$ if a Round $R_j$ has yet to begin and $R_{j-1}$ is Closed.
 \item A Tournament will be in $S_{2}^t$ if the current Round, $R_j$, of the Tournament is in its Open state.
 \item A Tournament permanently enters into $S_{3}^t$ when the Tournament owner decides to close the Tournament.
-\item A Tournament permanently enters into $S_{4}^t$ if the Tournament owner fails to select winners by the end of the current Round $R_j$.
+\item A Tournament permanently enters into $S_{4}^t$ if the Tournament owner fails to select winners by the end of the current Round $R_j$, or if there were no Submissions made to said Round.
 \end{enumerate}
-Again, entry fees of the Tournament can be returned at any time so long as a user has paid the Tournament's entry fee.
 
 Like Tournaments, Rounds exist in one of several time-dependent states. We introduce the following notation to describe these Round states: Let $S_k^r$ be the $k^{th}$ state of a Round. These states are:
 
@@ -186,44 +202,43 @@ Like Tournaments, Rounds exist in one of several time-dependent states. We intro
 \item $S_{5}^r$ - Closed
 \item $S_{6}^r$ - Abandoned
 \end{enumerate}
-\bigskip
+\vspace{4pt}
 
 Each Round of a Tournament, including the current Round $R_j$, is composed of:
 
 \begin{enumerate}
-    \item $startTime$ - the Round's start time
-    \item $endTime$ - the Round's end time
-    \item $roundReview$ - the Round's review duration in seconds
-    \item $roundReward$ - the Round reward
+    \item $start$ - the Round's start time
+    \item $duration$ - the Round's duration in seconds
+    \item $review$ - the Round's review duration in seconds
+    \item $bounty$ - the Round reward
 \end{enumerate}
-Until time $startTime$, the contract remains in the initial state, $S_{0}^r$. At $startTime$, the Round transitions to state $S_{2}^r$. Contributors may register new Submissions to $R_j$ at this time.
-Once time $endTime$ is reached, $R_j$ will enter state $S_{3}^r$ at which no more submissions may be made to $R_j$ and the Tournament owner may choose a set of winning submissions  until time $endTime$+$roundReview$. This set may consist of one or multiple Submission addresses.
-Upon the Tournament owner selecting a set of winning submissions from $R_j$, $roundReward$ MTX is allocated to each Submission. During this time, the Tournament owner must also choose one of the following courses of action for their Tournament:
+Until time $start$, the Round remains in the initial state, $S_{0}^r$. At $start$, the Round transitions to state $S_{2}^r$. Contributors may register new Submissions to $R_j$ at this time.
+Once time $duration$ has passed, $R_j$ will enter state $S_{3}^r$, at which point no more submissions may be made to $R_j$. The Tournament owner may then choose a set of winning submissions until time $start$+$duration$+$review$. This set may consist of one or multiple Submission hashes.
+Upon the Tournament owner selecting a set of winning submissions from $R_j$, $bounty$ MTX is allocated among the winning Submissions. During this time, the Tournament owner must also choose one of the following courses of action for their Tournament:
 \begin{enumerate}
 \item $DoNothing$ - Keeps $R_j$ open. 
 \item $StartNextRound$ - Closes $R_j$ and opens $R_{j+1}$
 \item $CloseTournament$ - Closes $R_j$ and the Tournament
 \end{enumerate}
 
-In the case of the $DoNothing$ option, $R_j$ will transition to $S_{4}^r$ until time $endTime$+$roundReview$. At $endTime$+$roundReview$, $R_{j+1}$ will be become the active Round and $R_j$ will again transition into $S_{5}^r$. With this option, $R_{j+1}$ will begin at $endTime$+$roundReview$, end at $endTime$ + $roundReview$ + $(endTime-startTime)$ and otherwise inherit its parameters from $R_j$.
+In the case of the $DoNothing$ option, $R_j$ will transition to $S_{4}^r$ until time $start$+$duration$+$review$. At $start$+$duration$+$review$, $R_{j+1}$ will be become the active Round and $R_j$ will again transition into $S_{5}^r$. With this option, $R_{j+1}$ will begin at $start$+$duration$+$review$, end at $start$+$duration$+$review$+$duration$, and otherwise inherit its parameters from $R_j$.
 
 In full, $R_{j+1}$ has the following parameters:
 \begin{align*}
-startTime_{c+1} &=  endTime + roundReview \\
-endTime_{c+1} &= endTime + roundReview +  \\
-& \;\;\;\; (endTime-startTime) \\
-roundReview_{c+1} &= roundReview \\
-roundReward_{c+1} &= roundReward
+start_{c+1} &=  start + duration + review \\
+duration_{c+1} &= duration \\
+review_{c+1} &= review \\
+bounty_{c+1} &= bounty
 \end{align*}
-If the Tournament contains less than $roundReward$ MTX, the remainder of the Tournament's MTX will instead be used to fund $R_{j+1}$.
+If the Tournament contains less than $bounty$ MTX, the remainder of the Tournament's MTX will instead be used to fund $R_{j+1}$. If the Tournament has no MTX left, round $R_{j+1}$ will transition to state $S_{1}^r$ at time $start$+$duration$+$review$ until the Tournament owner adds more MTX to the Tournament and allocates some to $R_{j+1}$. Then, as long as the time is still less than $start$+$duration$+$review$+$duration$, $R_{j+1}$ will transition to state $S_{2}^r$ and become an active round.
 
-If the $StartNextRound$ option is chosen, $R_j$ will transition to $S_5^r$ and Round $R_{j+1}$ will be created with the new Round parameters passed by the Tournament owner in tandem with their winning Submission set. As is the case with $DoNothing$, if the bounty specified for $R_{j+1}$ is less than the amount the Tournament itself holds, the Tournament's remaining MTX balance will be used instead.
+If the $StartNextRound$ option is chosen, $R_j$ will transition to $S_5^r$ and Round $R_{j+1}$ will be created with the new Round parameters passed by the Tournament owner in tandem with their winning Submission set. In this case, the Tournament must have enough MTX in its balance to allocate to $R_{j+1}$ the $bounty$ that was specified.
 
 Finally, the $CloseTournament$ option places both $R_j$ and the Tournament into their Closed states ($S_{5}^r$ and $S_{3}^t$ respectively) and distributes all remaining Tournament funds to the winners of $R_j$.
 
-In the event that the Tournament owner elects to attack the system by refusing to properly select a set of winning submissions or otherwise fails to select this set by $endTime$+$roundReview$, $R_j$ will enter $S_{6}^r$ and all participants in the Tournament will be able to withdraw an evenly-divided portion of the Tournament's bounty.
+Without any mechanism to stop them, Tournament creators may be motivated to use a Tournament's bounty to collect valid solutions, yet never pay any Submission creators for their work. As a result of $S_{6}^r$, this behavior is made impossible; in the event that the Tournament owner elects to attack the system by refusing to properly select a set of winning submissions or otherwise fails to select this set by $start$+$duration$+$review$, $R_j$ will enter $S_{6}^r$, wherein all participants who have submitted to the round will be able to withdraw an evenly-divided portion of the Tournament's bounty.
 That is: regardless of the Tournament owner's actions, once the Tournament has been created, the associated bounty {\it will be distributed} to at least some if not all participants. In the event that there are no participants, the Tournament owner will be allowed to recover their funds.
-In this way, Matryx attempts to counteract the risk of malicious Tournament owners refusing to reward scientific minds for their work. The reputation system also plays a role in mitigating this attack (see section \ref{reputation}).
+In this way, Matryx attempts to counteract the risk of malicious Tournament owners refusing to reward Submission creators for their work. The reputation system also plays a role in mitigating this attack (see section \ref{attacks}).
 
 \subsection{Submissions}\label{Submissions}
 
@@ -232,104 +247,21 @@ After entering a Tournament, a user can create one or multiple Submissions only 
 \begin{enumerate}
 \item $tournament$ - The tournament address the submission was made to
 \item $roundIndex$ -  The index of the round to which the submission was made
-\item $commitHash$ - The address of the commit the submission references
+\item $commitHash$ - The address of the Commit the submission references
 \item $content$ - A deterministic storage address to the content of the submission, including its title and description
 \item $reward$ - The MTX reward this submission has won
 \item $timestamp$ - A unix-epoch timestamp in seconds for the creation of the submission
 \end{enumerate}
 
-As described above, each Submission is submitted to a particular $roundIndex$ of a $tournament$. A submission's $content$ allows users to include the same Commit $contentHash$ within multiple commits yet describe and title the Submission as is most appropriate for the context of the tournament they're submitting it to. We will now describe the Matryx commit system.
-
-\subsection{Commits}\label{Commits}
-
-Previously, Matryx attributed credit to users via manually populated contributor and reference arrays within each Matryx Submission. The commit system is the second iteration of Matryx's attribution model. Because there are still unresolved issues with the commit system as a means of attributing credit to Matryx users, the current primary function of Matryx Commits is to provide indisputable timestamps for original scientific work. Still, Commits accumulate contribution information for multi-commit projects (albeit naively), allowing for a rudimentary approximation of the distribution of work performed over a project's contributing members. The anatomy of Matryx Commits is currently as follows:
-
-\begin{enumerate}
-\item $owner$ - The owner of the commit
-\item $timestamp$ - The unix-epoch time in seconds at which the commit was placed on chain
-\item $groupHash$ - The keccak256 hash of the group working on the line of work this commit is a part of
-\item $commitHash$ - The commit's unique identifier; A keccak256 hash of: the creator of the commit, the salt used to claim the commit and the $contentHash$ of the commit
-\item $contentHash$ - A deterministic content Multihash (IPFS, Swarm, etc)
-\item $value$ - The value that has been assigned to the commit
-\item $ownerTotalValue$ - The total value that the owner of this commit has generated up until this commit
-\item $totalValue$ - The total value generated by this commit and all of its ancestry
-\item $height$ - The length of this commit chain
-\item $parentHash$ - The parent commit's keccak256 hash
-\item $children$ - keccak256 hashes of all child commits whose content is derivative of this commit
-\end{enumerate}
-\bigskip
-
-To create a commit, a user must perform a commit-reveal process (which we've aliased ``claim-create" to avoid confusion with Matryx Commits). This ensures that their content is not front-runnable by malicious actors.
-This process entails the user making two transactions:
-\begin{enumerate}
-\item claimCommit
-\item createCommit \textit{or} createSubmission
-\end{enumerate}
-
-To claim a commit, the user must provide the commit's hash to the $claimCommit$ function. As mentioned above, the $commitHash$ is the keccak256 hash of the user's address, some secret or salt and the commit's $contentHash$. Once the $claimCommit$ transaction has been mined, the user is free to create their commit by calling the $createCommit$ function with parent commit's $commitHash$ i.e. $parentHash$ (if this commit was a continuation of prior work), their salt, the $contentHash$ of the commit, its $value$, as well as a special isFork flag. When the user sets the isFork flag to true, or creates a commit without a parent, a new group is created for their commit. When a member of a commit's group adds a Matryx user to that group, the new group member is then able to create commits off of any commit created by members of that group, without the transfer of MTX. Conversely, setting isFork to true will assign a new group to the user's commit, allowing the user to work alone or with a new group of their choosing, but will require the user to transfer to the forked commit its $totalValue$ in MTX. After calling $claimCommit$, the user can alternatively call $createSubmission$, which will both create a new Commit as well as a Submission to a Tournament designated by the user.
-
-\subsection{Reputation}\label{reputation}
-
-As part of the Matryx team's ongoing efforts to shrink the bytecode of the Platform, we have removed reputation from the smart contracts themselves and have temporarily adopted an ``Upvote-Downvote" reputation system.
-This system solely tracks the number of positive and negative interactions users have had with one another.
-While in previous versions of Matryx where user reputation values directly affected the MTX payout of each contributor of a winning Submission, current reputation values are now solely used as a human aid in providing an approximation of the trustworthiness of other users and are no stored on-Platform.
-We intend to build upon this system and offer more robust reputation values in the future. However as this preliminary Upvote-Downvote system has proven effective for various online platforms in the past, we view it as a reasonable means to compute reputation for now.
-
-\section{Design Constraints}\label{designconstraints}
-\subsection{Incentives}\label{incentives}
-Matryx's incentivization system accounts for negligent and malicious behavior from Tournament and Submission creators alike. Tournament creators must pay the full bounty attached to their Tournament before it can be created, and Submission creators must pay an entry fee in order to enter a Tournament. 
-%As the Platform matures, the incentive structure will be adapted in response to observed attacks and weaknesses.
-
-\subsection{Trust}\label{trust}
-As with any public incentivized system, trust in each participant should be minimized. 
-A trustless version of Matryx would operate only on problems with programmatically verifiable solutions via some evaluation criteria specified within the context of a Turing-Complete language.
-However, game theory in decentralized systems is still being developed. 
-Some reputation systems are nearly trustless such as Eigentrust and Peertrust but have yet to be implemented on fully distributed systems.
-TrueBit\cite{teutsch}, Golem\cite{golem}, and other systems attempt to generalize an on-chain structure to efficiently verify off-chain computation\cite{sanjay2016}. 
-This would allow more intensive computable problems to be verified and rewarded. 
-However, the most useful problems in STEM that require collaborative problem solving are not necessarily verifiable in this way; as most Tournaments will require human evaluation of their Submissions, Matryx opted for a fully human-dependent solution evaluation process.
-
-While this decision did mitigate the overwhelming constraints that would have been placed on Matryx had it adopted a fully automated solution verification system, utilizing a fully human verification system introduces several potential attack vectors for Tournament and Submission creators.
-
-It is expected that initial bounties will be posted by known entities, and that Submitters will refuse to work on Tournaments if they do not know the identity of the owner.
-Also, by design, the $bounty$ MTX that is put forward by the Tournament owner is locked in a smart contract and will be distributed regardless.
-Therefore, the Tournament owner does not have much to gain at the cost of losing his or her MTX while also keeping in mind that the $bounty$ is set to an amount that incentivizes users on the Platform to interact with that Tournament.
-
-Future iterations of the Platform will attempt to place additional checks on Tournament owners, by requiring the use of an identity system. 
-Uport\cite{heck2016}, or similar systems could be used to require the Tournament owner to select an independent review board to evaluate Submissions. 
-This would greatly lessen (but not eliminate) trust placed in the Tournament owner. 
-
-\subsection{Attacks}\label{attacks}
-In the design of the system, several potential attack vectors were considered. Broadly, these attacks fall into two distinct categories:  Tournament owner and Submission creator attacks. The following are potential Submitter attacks:
-
-%\subsubsection{Tournament Owner Attacks}\label{tournamentattacks}
-\begin{enumerate}
-    \item  Submitters have a strong incentive to bias the results of a Tournament via any means available. 
-One potential attack is entering the same or similar Submission multiple times, thus increasing the likelihood of being evaluated and/or influencing the Tournament owner to take longer than the $roundReview$ seconds allotted for the Round's review period. While it may be possible for a Submitter to perform a Sybil attack on a Tournament by submitting from a single address, logic on the Tournament that aggregates submissions by users largely resolves this. However, an unrestricted Submitter may still perform a Sybil attack on a Tournament by making Submissions from multiple accounts. We have thus attempted to minimize the cost of this attack by introducing entry fees to Tournaments, as described in Section \ref{Tournaments}. With an appropriately chosen Tournament entry fee, the Contributor’s gain from making multiple Submissions does not exceed the opportunity cost of the entry fee. Additionally, user reputation may aid in mitigating this attack to a small degree.
-\item An unrestricted Submission creator may choose to copy the work of another Submission creator. Given the Matryx team's mission statement, this was a particularly concerning attack vector for us. We opted to minimize the likelihood of this attack by forcing those who wish to view the contents of a Submission to register their address to the Submission. We can then perform targeted similarity analysis between Submissions to ensure uniqueness and proper attribution of credit. Platform users also have the ability to flag a Submission for missing a reference, which negatively affects the Submission owner's user reputation. Additionally, the Submission evaluation interface may be tweaked to prefer earlier Submissions.
-\item Tournament owners may also attempt to attack the Platform. The most obvious attack available to an unrestricted Tournament owner is to refuse to reward their Tournament's bounty to any of its participants. In this way, the Tournament owner could receive the benefit of seeing all work performed on a problem without ever having to credit those who did the work.
-The Matryx Platform minimizes the likelihood of this attack through both the reputation system and the addition of state $S_{6}^r$ to Rounds, wherein all participants of a Tournament become able to withdraw an equal share of the Tournament's bounty in the event that the Tournament owner does not select at least one winning Submission.
-
-\item Intra-round Submission duplication attacks may be mitigated entirely with a two-phase commit-and-reveal Submission process. 
-In this system, Submission creators publish only the encrypted hash of their Submission and thus commit to that Submission without making it publicly available.
-In the reveal phase, the Tournament creator may pass the Round's encryption key along with the winning Submission set.
-This keeps Submission content private until the end of the judging phase, without significantly increasing the complexity of the Round's logic.
-\end{enumerate}
-
-\subsection{Licensing}\label{licensing}
-Licensing metadata may be stored directly on the Ethereum blockchain to provide authoritative ownership of assets or contributions. 
-Each Submission can carry a license field that describes the terms of its use. 
-However, we recognize that proof of ownership registered to a blockchain is not the only component to licensing data. 
-Technology often moves faster than law, governance, and society, all of which will need to be updated. 
-Matryx will provide a record of transactions, derivative works and ownership, and attribution while technology, law, and society continue working towards an updated system. 
-It is our hope that most Submissions on Matryx will be permissively licensed. 
-It is a requirement of the Matryx Platform that all Submissions be appropriately licensed for public distribution and modification.
+As described above, each Submission is submitted to a particular $roundIndex$ of a $tournament$. A particular $commitHash$ can be included in multiple Submissions, but said Submissions cannot be entered to the same $roundIndex$ of the same $tournament$.
+We will now describe the Matryx System design.
 
 \section{System Design}\label{systemdesign}
 
 Sitting above each deployed Matryx contract is MatryxSystem: a smart contract responsible for delegating work to the intended library based on information from the incoming call. 
 MatryxSystem is the backbone of Matryx, and underlies the proper functioning of each call made to contracts on the Platform. A UML representation of the MatryxPlatform and MatryxSystem can be seen in \textbf{Figure \ref{Platformdesign}}.
 
+\bigskip
 Calls to MatryxPlatform happen in several steps:
 \begin{enumerate}
     \item Caller type lookup on MatryxSystem
@@ -339,16 +271,16 @@ Calls to MatryxPlatform happen in several steps:
     \item Call to library function
 \end{enumerate}
 \bigskip
+
 In further detail:
 
 \begin{enumerate}
-    \item \textit{Caller type lookup:} \\ When a call is made to the Platform, the Platform’s fallback function is invoked. The fallback first makes a call to System to determine what type of Matryx entity (Tournament, Round, Submission, or User), is making the call.
+    \item \textit{Caller type lookup:} \\ When a call is made to the Platform, the Platform’s fallback function is invoked. The fallback first makes a call to System to determine what type of Matryx entity (Platform, Commit, Tournament, or Unknown), is making the call.
     \item \textit{Library name lookup:} \\ Using the type from 1), Platform makes a call to System to look up the name of the library associated with that type.
     \item \textit{Library address lookup:} \\ Using the library name from 2), Platform makes a call to System to look up the current library address associated with that name.
     \item \textit{Calldata transformation lookup:} \\ Using the library name and function signature from the incoming calldata, Platform makes one final call to System to determine how to transform the incoming calldata for the respective library call.
     \item \textit{Call to library function:} \\ With the transformed calldata, Platform makes the call to the library function and returns the result.
 \end{enumerate}
-\bigskip
 
 While most of these steps are quite straightforward, we believe step 4) warrants an explanation. Calldata transformation information contains the following data:
 
@@ -362,69 +294,69 @@ After the Platform receives this data from MatryxSystem, it will synthesize a ca
 \begin{enumerate}
 \item Platform will replace the function selector of the incoming call with $modifiedSelector$ returned by System.
 \item Platform will inject $injectedParams$ directly after $modifiedSelector$. $injectedParams$ includes the address of the original caller to the platform, so that $msg.sender$ is preserved in the call to the library, and the address of MatryxPlatform, so that the library has access to the data stored by the Platform.
-\item Platform will offset each parameter whose index is contained within $dynamicParams$ by the length of $injectedParams$. This allows us to add parameters to an incoming call while maintaining the integrity of the call's existing parameters.
+\item Platform will offset each parameter whose index is contained within $dynamicParams$ by the length of $injectedParams$. This allows MatryxPlatform to add parameters to an incoming call while maintaining the integrity of the call's existing parameters.
 \end{enumerate}
 
 MatryxPlatform will then make a delegatecall to the library at the address received from System with this transformed calldata.
 
 \subsection{Upgradeability}\label{upgradeability}
-Platform design, like research and creation, is an iterative process. Because of this, the Matryx team took considerable steps to ensure that MatryxPlatform contained a system to safely and effectively upgrade its behaviors and storage model.
+In order to further iterate on the functionality of the platform, the Matryx team took considerable steps to ensure that MatryxPlatform contained a system to safely and effectively upgrade its behaviors and storage model.
 This is done via the aforementioned MatryxSystem.
 
-There are two types of upgrades possible for ours or any smart contract system:
+There are two types of upgrades possible for Ethereum smart contract systems:
 \begin{enumerate}
 \item Functionality upgrades
 \item Storage upgrades
 \end{enumerate}
-For purely functional upgrades, MatryxSystem can register a library for the desired new functionality at any time. All versions of MatryxPlatform are capable of undergoing functionality changes and bug fixes in this manner without the need to recreate the Platform’s storage within another contract. 
+For purely functional upgrades, MatryxSystem can register a library containing new functionality at any time. All versions of MatryxPlatform are capable of undergoing functionality changes and bug fixes in this manner without the need to recreate the Platform’s storage within another contract. 
 
-Unlike a pure logic upgrade, storage upgrades require the creation of a new Platform version on MatryxSystem. MatryxSystem must then register each new Platform library to MatryxSystem under that version and update its $currentVersion$ field, so that any calls made to this ``new" Platform (or any new contracts created by it) will be directed to their respective upgraded libraries. The upgraded libraries for Tournament, Round, or Submission can then safely change the structure of their data so that new Tournaments, Rounds, or Submissions can support new features.
+Unlike a purely functional upgrade, storage upgrades require the creation of a new Platform version on MatryxSystem. Each new Platform library under must then be registered to MatryxSystem under that version. MatryxSystem's $currentVersion$ field must also be updated, so that any calls made to this ``new" Platform (or any new contracts created by it) will be directed to their respective upgraded libraries. The upgraded libraries for a Tournament or Commit can then safely change the structure of their data so that new Tournaments and Commits can support new features.
 
 In the interest of security, upgrades to Matryx can only be performed by the Matryx team at Nanome.
 
+\section{Platform Security}\label{platformsecurity}
 
-\section{Applications}\label{applications}
+\subsection{Trust}\label{trust}
+Unfortunately, game theory alone cannot completely eliminate all malicious behavior on a distributed system. As a result, a reputation system is a necessary component of Matryx. There has been prior work done on distributed reputation systems, such as Eigentrust\cite{eigentrust}, Eigentrust++\cite{eigentrust++} and PeerTrust\cite{peertrust}; however, after critical evaluation and partial implementation, none appeared to be fit for an application running directly on the Ethereum blockchain. The Matryx Team has thus opted to store and compute reputation values within a centralized context. As a result, we've removed reputation's effect on the mechanics of transactions made to the platform.
+Aside from reputation and sound game theory, future iterations of the platform will also attempt to place additional checks on Tournament owners by, for example, requiring the use of an identity system for all Tournament creators. 
 
-\subsection{Mathematics}\label{mathematics}
-The Calcflow software features several tools such as a 3D parametric graphing utility and a vector field graphing utility that is currently used in some of the leading universities in the United States. 
-Users of the Matryx Platform can interface with the Calcflow software in order to assist them in developing parametric assets as Submissions to a Tournament.
+\subsection{Attacks}\label{attacks}
+In designing Matryx, several potential attack vectors were considered. The following are some of those attacks and the strategies we employed to mitigate them:
 
-As the theoretical foundations in numerical analysis are researched, Calcflow will be further developed for large-scale projects that can contribute to a Tournament. 
-For example, NASA\cite{samareh2001} published a paper regarding parametrization techniques in order to create geometric models that comprise thousands of curves to design airfoils. 
-Calcflow can be used to analyze the smoothness qualities required in constraint-based CAD modeling.
-An example Tournament can be defined as “Develop a set of parametric equations that is $C^{\infty}$ in each piece-wise component to create a chair”. 
-A chair has many mathematical components and Calcflow can be used to piece parametrized expressions to create a chair.
+%\subsubsection{Tournament Owner Attacks}\label{tournamentattacks}
+\begin{enumerate}
+\item  Tournament bounties give Submission creators a strong incentive to bias the results of a Tournament in their favor.
+One way a Submission creator might attempt to achieve this is by entering similar Submissions multiple times, in the hopes of increasing the likelihood of being evaluated in Tournaments with many Submissions.
+Because Tournaments do not allow users to create multiple Submissions in a Round using the same Commit hash, the only feasible way to create multiple similar Submissions is to claim and create multiple Commits with slightly modified content. This attack is therefore somewhat mitigated, as there is a significant time and gas overhead for each new Submission the user wishes to generate. Additionally, because creating a Submission generates an event, Tourmament owners can efficiently filter Submissions by sender, allowing them to see easily detect duplicate Submissions by the same user. However, an anonymous Submitter may still perform a Sybil attack on a Tournament by making Submissions with multiple Ethereum public keys. We have  attempted to minimize the cost of this attack by introducing entry fees to Tournaments, as described in Section \ref{Tournaments}. With an appropriately chosen Tournament entry fee, the potential benefit from making multiple Submissions can be balanced against the opportunity cost of having to pay an entry fee for each new anonymous public key used to submit a duplicate Submission. Additionally, user reputation may aid in mitigating this attack to a small degree by allowing honest Matryx users to negatively influence the reputations of users who attempt to perform this attack.
+\item One commonly exploited blockchain attack is the phenomenon of frontrunning. Because Matryx is deployed on a public blockchain, pending transactions are visible to anyone. This was of particular concern for Matryx Commits. A malicious actor could monitor pending transactions that create new Commits, replicate their content, and send their own transaction with a higher gas price, increasing the probability that the fraudulent, replicated Commit transaction will be mined first. Without a Commitment scheme (``commit-reveal"), the contents of the Commit would be attributed to the malicious user instead of the honest one. The current implementation of the Commit creation process in Matryx uses a Commitment scheme to completely eliminate the possibility of this attack. Commits are created in two separate transactions: The first transaction claims a Commit hash for future use, and the second one reveals the contents of the Commit. Matryx requires that the second transaction occur at least one block after the user has already claimed the Commit. This ensures that malicious actors monitoring the system cannot frontrun Commit creators, since the Commit contents are only revealed on the second transaction and are reserved for the user address that made the original claim.
+\item A malicious Commit creator could slightly modify the content of an existing Commit and create a new Commit without referencing the original Commit as a parent. In such a case, the creator of the original Commit would be left without credit, despite the fact that a derivative Commit was created from it. We plan to mitigate this attack by running similarity checks against existing content when new content is uploaded. Still, this solution will only mitigate attacks made using Nanome's interfaces and will fail against command-line attacks. In the command-line case, Commit timestamps offer definitive proof of authorship and can be used to settle legal disputes outside of Matryx in the event of this particular attack.
+\item Tournament owners may also attempt to attack the Platform. The most obvious attack available to a malicious Tournament owner is to refuse to reward their Tournament's bounty to any of its participants. The Tournament owner could then benefit by seeing all work performed on a problem without ever having to credit those who did the work to solve it. As stated earlier, The Matryx Platform eliminates this attack with state $S_{6}^r$, wherein all users who have submitted to the round are able to withdraw an equal share of the Tournament's bounty in the event that the Tournament owner does not select at least one winning Submission.
+\end{enumerate}
 
 \section{Future Work}\label{futurework}
 \subsection{Reputation and Peer Review}\label{reputationandpeerreview}
-Reputation is currently an auxiliary component to give contributors and Tournament posters a public view of how their contributions are valued. 
-An automated system that can assign subjective value to the contribution in a Tournament is a goal to be worked towards. 
-Determining the value of a contribution given a wide range of bounties will likely take human interaction. 
-Trusting individuals who have a monetary stake in a reward mechanism will initially require centralization in the Tournament poster. 
-The community of contributors is trusting the Tournament provider to make their reward decision in a fair way based upon the supplied data in the Tournament contract state. 
-Contributors will have a public record of where awards were sent and may judge their Tournament providers accordingly. 
+Reputation is currently an auxiliary component to give contributors and Tournament posters a public view of how their contributions are valued.
+Determining the value of a contribution given a wide range of bounties will likely take human interaction.
+Individuals who have a monetary stake in a reward mechanism will initially have to place some trust in the Tournament creator and assume that the creator will reward the Submissions fairly based on the quality of their content. 
+Contributors will have a public record of where awards were sent and may judge their Tournament creators accordingly.
 
 Future implementations may use a voting system by the crowd to help determine contribution value.
 These votes may be Sybil attacked (though with on-chain voting, the gas cost of voting will help mitigate this). 
-The validity of these votes must be taken into account as voters may not have the expertise needed to formulate an accurate assessment of a contribution. 
-This leads the system into a model where curators who have gained a higher reputation in certain context-areas may facilitate the value assignments. 
-These curators come with their own challenges of trust, however. 
-Combining financial incentives and willing collaboration to generate higher reputation will be explored.
-
-\subsection{Contribution Tracking} \label{contributiontracking}
-The Matryx team plans to introduce a work tracking system to the Platform in the near future. This system will allow users to build off of others' work directly, without the need for these works to first be posted to a Tournament. This system is still in development, but will eventually allow for automatically populated references and contributors on Submissions and a higher level of transparency for ongoing collaborative scientific projects.
+Additionally, the validity of these votes must be taken into account as voters may not have the expertise needed to formulate an accurate assessment of a contribution. This leads the system into a model where curators who have gained a higher reputation in certain context-areas may facilitate the value assignments. 
+We will explore the possibility of combining financial incentives and willing collaboration to generate a higher reputation.
 
 \subsection{Marketplace}\label{marketplace}
 The Matryx Platform will also serve as a medium for the design and open exchange of digital assets through a marketplace system; any user with MTX tokens will be able to buy and sell assets under the licensing agreements of the asset owner. 
 The metadata for these objects will be stored on the blockchain while the objects themselves will be stored off-chain (similarly to how Tournaments and Submissions store their contents).
-\subsection{Access} \label{access}
-In the fully-featured Matryx Platform, users will be able to access both Tournaments as well as any tracked work. 
-When a user uploads their contribution, whether to a Tournament or an open project, the contribution's content hash is stored on-Platform.
-This provides a decentralized record of a vast wealth of scientific data.
 
-By default, Matryx Tournaments are unencrypted. We hope that this will encourage the community to preserve the accessibility of the scientific data stored on-Platform so that others may learn from and expand upon it.
-The Matryx Platform is considering avenues to provide free storage for Submissions and users that are contributing to the Matryx.
-This open access may become donation based, requiring those that submit problems to pay for the storage costs so others may benefit from their findings.
+% Revisit during Marketplace development
+% \subsection{Licensing}\label{licensing}
+% Licensing metadata may be stored on the Ethereum blockchain to provide authoritative ownership of Commits and Submissions.
+% Each Submission can carry a license field that describes the terms of its use. 
+% However, we recognize that proof of ownership registered to a blockchain is not the only component to licensing data.
+% It is our hope that most Submissions on Matryx will be permissively licensed. 
+% ASK STEVE AND SAM
+%It is a requirement of the Matryx Platform that all Submissions be appropriately licensed for public distribution and modification.
 
 \subsection{Judging Boards} \label{judgingboards}
 Rather than trusting the Tournament owner to judge a Tournament, it may be advantageous to select a group of third-party judges.
@@ -437,11 +369,7 @@ As such this capability will not be implemented until later versions of Matryx.
 \subsection{Private Tournaments}\label{privateTournaments}
 A system can be conceived where the results of a Tournament are made private, by encrypting all Submissions with a public key of a key pair created by the Tournament owner. 
 This would ensure that no one but the Tournament owner could access the Submissions. 
-The Tournament could proceed as normal, with the winning Submission from each round revealed publicly. 
-The final iteration could be kept private if desired by both the Contributor and the Tournament owner. 
-The main drawback of a private Tournament is the level of Trust that must be placed in the Tournament owner. 
-Because Submissions are private, there is no oversight over the judging process. 
-This may be mitigated with the use of carefully structured independent judging boards.
+The Tournament could proceed as normal, with the winning Submission from each round revealed publicly.
 
 \subsection{Alternative Incentives}\label{alternative incentives}
 It may be that monetary incentives are not applicable to scientists. 
@@ -453,6 +381,7 @@ Title-based rewards registered by trusted authorities could potentially be place
 
 \begin{figure*}
 \caption{Matryx Platform Design}
+\bigskip
 \label{Platformdesign}
 \centering
 \includegraphics[scale = .5]{../Figures/MatryxArchitecture2018-MatryxPlatform.png}
